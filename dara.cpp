@@ -38,13 +38,6 @@ short getMaxAdjacent(short r, short c, short p) {
     }
 
     return max(v, h);
-
-    /*return (c + 2 < COLS && p == board[r][c + 1] && p == board[r][c + 2]) ||
-        (c - 2 >= 0 && p == board[r][c - 1] && p == board[r][c - 2]) ||
-        (c - 1 >= 0 && c + 1 < COLS && p == board[r][c-1] && p == board[r][c+1]) ||
-        (r - 2 >= 0 && p == board[r - 1][c] && p == board[r - 2][c]) ||
-        (r + 2 < ROWS && p == board[r + 1][c] && p == board[r + 2][c]) ||
-        (r - 1 >= 0 && r + 1 < ROWS && p == board[r-1][c] && p == board[r+1][c]);*/
 }
 
 void printBoard() {
@@ -70,6 +63,12 @@ void placeStone(bool p) {
     short r, c;
     cin >> r >> c;
     r--; c--;
+
+    if (r < 0 || c < 0 || r >= ROWS || c >= COLS) {
+        cout << "Invalid position! Please choose again.\n";
+        placeStone(p);
+        return;
+    }
 
     if (board[r][c] != 0) {
         cout << "That spot is taken! Please choose again.\n";
