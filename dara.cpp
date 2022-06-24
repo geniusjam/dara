@@ -190,7 +190,7 @@ int main() {
     printBoard();
     cout << "You may now place your stones." << "\n\n";
     // Drop phase
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 12; i++) {
         placeStone(0);
         printBoard();
         cout << "\n\n";
